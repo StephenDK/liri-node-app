@@ -1,0 +1,22 @@
+{
+  "name": "liri-node-app",
+  "version": "1.0.0",
+  "description": "CLI language interpretation and recognition app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StephenDK/liri-node-app.git"
+  },
+  "keywords": [
+    "liri"
+  ],
+  "author": "Stephen Klein",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StephenDK/liri-node-app/issues"
+  },
+  "homepage": "https://github.com/StephenDK/liri-node-app#readme"
+}
