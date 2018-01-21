@@ -1,7 +1,9 @@
 // Section 1:
 // Global Variables and Dependencies
 // ==========================================================
-  
+
+// Include the request npm package
+var request = require('request');
 
 var inputString = process.argv;
 
@@ -30,6 +32,7 @@ function operatorConditionChecker () {
 		console.log("spotifying a song");
 
 		// Run the spotify song function
+
 	} else if (operator === "movie-this"){
 		console.log("Searching for movie");
 
@@ -38,11 +41,16 @@ function operatorConditionChecker () {
 	} else if (operator === "do-what-it-says"){
 		console.log("Do what is says");
 
-		// run the do what is syas function
+		// run the do what is says function
 
 	} else {
 		console.log("Please enter apporite command")
 	}
+};
+
+function movieSearch (userInput) {
+	// var for holding the omdb movie url  
+	var queryUrl = "http://www.omdbapi.com/?t=" + userInput + "&y=&plot=short&apikey=trilogy";
 }
 
 // Section 3:
