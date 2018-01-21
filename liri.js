@@ -37,6 +37,8 @@ function operatorConditionChecker () {
 		console.log("Searching for movie");
 
 		// run the search movie function
+		movieSearch(userInput);
+
 
 	} else if (operator === "do-what-it-says"){
 		console.log("Do what is says");
@@ -84,11 +86,14 @@ function movieSearch (userInput) {
 	});
 };
 
+// Function to grab tweets from twitter
+function myTweets () {
+
+}
+
 // Section 3:
 // Main Process
 // ===========================================================
 // Function to check operator input
 operatorConditionChecker();
 
-// Perform movie search function and pass in userInput as argument
-movieSearch(userInput);
