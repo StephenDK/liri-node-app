@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/StephenDK/liri-node-app#readme",
   "dependencies": {
-    "request": "^2.83.0"
+    "request": "^2.83.0",
+    "twitter": "^1.7.1"
   }
 }

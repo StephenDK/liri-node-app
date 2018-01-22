@@ -5,6 +5,9 @@
 // Include the request npm package
 var request = require('request');
 
+// Import the twitter api keys from the "keys file"
+var keys = require('./keys.js');
+
 var inputString = process.argv;
 
 // API operator
@@ -14,6 +17,7 @@ var userInput = inputString[3];
 // tests and debugging
 console.log(operator);
 console.log(userInput);
+
 
 
 
