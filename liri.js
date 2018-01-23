@@ -8,15 +8,22 @@ var request = require('request');
 // Import the twitter api keys from the "keys file"
 var keys = require('./keys.js');
 
+// Include the twitter npm modules
+var Twitter = require('twitter');
+
 var inputString = process.argv;
 
 // API operator
 var operator = inputString[2];
+// UserInput
 var userInput = inputString[3];
 
 // tests and debugging
 console.log(operator);
 console.log(userInput);
+console.log("---------------------");
+
+// console.log(keys);
 
 
 
@@ -30,7 +37,7 @@ function operatorConditionChecker () {
 	if (operator === "my-tweets"){
 		console.log("These are the tweets");
 		// Function to run the get my tweets
-
+		myTweets();
 
 	} else if (operator === "spotify-this-song"){
 		console.log("spotifying a song");
@@ -83,8 +90,8 @@ function movieSearch (userInput) {
 				"Actors": jsonData.Actors,
 				"Rotten Tomatoes Rating": jsonData.Ratings[1].Value
 			};
-			console.log("--------------------")
-			console.log(data)
+			console.log("--------------------");
+			console.log(data);
 
 		}
 	});
@@ -92,7 +99,30 @@ function movieSearch (userInput) {
 
 // Function to grab tweets from twitter
 function myTweets () {
+	// Set variable "client" to the twitter keys
+	var client = new Twitter(keys);
 
+	// screen name parameters to pass into client
+	var params = { screen_name: "WebDevKlein"};
+
+	// twitter client request
+	client.get("statuses/user_timeline", params, function(error, tweets, response) {
+		if (!error) {
+			var data = [];
+
+			for (var i = 0; i < tweets.length; i++) {
+				data.push({
+					created_at: tweets[i].created_at,
+					text: tweets[i].text
+				});
+			}
+			// test and debugging
+			
+			console.log(data);
+			
+
+		}
+	});
 }
 
 // Section 3:
