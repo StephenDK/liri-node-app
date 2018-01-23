@@ -26,7 +26,7 @@ console.log(operator);
 console.log(userInput);
 console.log("---------------------");
 
-// console.log(keys);
+console.log(keys);
 
 
 
@@ -46,6 +46,7 @@ function operatorConditionChecker () {
 		console.log("spotifying a song");
 
 		// Run the spotify song function
+		spotifyApiSearch (userInput);
 
 	} else if (operator === "movie-this"){
 		console.log("Searching for movie");
@@ -127,9 +128,36 @@ function myTweets () {
 		}
 	});
 }
+var getArtistNames = function(artist) {
+	return artist.name;
+}
 
 function spotifyApiSearch (userInput) {
+	var spotify = new Spotify(keys);
+	// Conditional for undefined spotify search
+	if (userInput === undefined) {
+		userInput = "What's my age again";
+	}
+	// Spotify search
+	spotify.search({type: 'track', query: userInput }, function(err, data) {
+		if (err) {
+			console.log("Error occured: " +
+				err);
+			return;
+		}
+		var songs = data.tracks.items;
+		var data = [];
 
+		for (var i = 0; i < songs.length; i++){
+			data.push({
+				"artist": songs[i].artists.map(getArtistNames),
+				"song name: ": songs[i].name,
+				"preview song: ": songs[i].preview_url,
+        		"album: ": songs[i].album.name
+			})
+		}
+		console.log(data);
+	})
 }
 
 // Section 3:

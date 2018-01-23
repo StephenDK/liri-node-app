@@ -16,7 +16,7 @@ var twitterKeys = {
 var spotifyKeys = {
 	id: 'c625fe362cc341ae9e45cf44e0dd4778',
 	secret: 'b5ae85e2fd11404e9663de1460a31435',
-}
+};
 
 // Add twitterKeys data to the module.exports object
 // and access them from the app.js file.
