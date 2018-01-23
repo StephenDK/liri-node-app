@@ -11,6 +11,9 @@ var keys = require('./keys.js');
 // Include the twitter npm modules
 var Twitter = require('twitter');
 
+// Include the spotify npm modules
+var Spotify = require('node-spotify-api');
+
 var inputString = process.argv;
 
 // API operator
@@ -123,6 +126,10 @@ function myTweets () {
 
 		}
 	});
+}
+
+function spotifyApiSearch (userInput) {
+
 }
 
 // Section 3:
