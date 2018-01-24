@@ -15,12 +15,12 @@ var Twitter = require('twitter');
 // Include the spotify npm modules
 var Spotify = require('node-spotify-api');
 
-var inputString = process.argv;
+var inputArray = process.argv;
 
 // API operator
-var operator = inputString[2];
+var operator = inputArray[2];
 // UserInput
-var userInput = inputString[3];
+var userInput = inputArray[3];
 
 // tests and debugging
 console.log(operator);
@@ -77,14 +77,29 @@ function writeToFile (data) {
 }
 // Function to return a movie search
 function movieSearch (userInput) {
+	
+
 	// conditional if the user input is undefined
 	if (userInput === undefined) {
 		userInput = "Mr Nobody";
+	} else {
+		var newUserInput = "";
+
+	for (var i = 3; i < inputArray.length; i++) {
+		if (i > 3 && i < inputArray.length) {
+
+			newUserInput = userInput + "+" + inputArray[i];
+		} else {
+			 newUserInput += inputArray[i];
+		}
 	}
+
+	console.log("new user input: " + newUserInput);
+}
 
 
 	// var for holding the omdb movie url  
-	var queryUrl = "http://www.omdbapi.com/?t=" + userInput + "&y=&plot=short&apikey=trilogy";
+	var queryUrl = "http://www.omdbapi.com/?t=" + newUserInput + "&y=&plot=short&apikey=trilogy";
 	// Tests and debugging
 	console.log(queryUrl);
 
