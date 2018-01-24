@@ -20,6 +20,7 @@ var spotifyKeys = {
 
 // Add twitterKeys data to the module.exports object
 // and access them from the app.js file.
-module.exports = twitterKeys;
-// Add  spotify keys to export
-module.exports = spotifyKeys;
+module.exports = {
+	twitterKeys: twitterKeys,
+	spotifyKeys: spotifyKeys
+}

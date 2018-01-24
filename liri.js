@@ -1,7 +1,8 @@
 // Section 1:
 // Global Variables and Dependencies
 // ==========================================================
-
+// Import the fs (file system) package
+var fs = require('fs');
 // Include the request npm package
 var request = require('request');
 
@@ -26,7 +27,7 @@ console.log(operator);
 console.log(userInput);
 console.log("---------------------");
 
-console.log(keys);
+
 
 
 
@@ -61,10 +62,20 @@ function operatorConditionChecker () {
 		// run the do what is says function
 
 	} else {
-		console.log("Please enter apporite command")
+		console.log("Please enter apporoite command")
 	}
 };
-
+// Function to write to the log.txt
+function writeToFile (data) {
+	fs.appendFile("log.txt", JSON.stringify(data) + "\n", function(err){
+		if (err) {
+			return console.log(err);
+		} else {
+			console.log("log.txt was updated!");
+		}
+	})
+}
+// Function to return a movie search
 function movieSearch (userInput) {
 	// conditional if the user input is undefined
 	if (userInput === undefined) {
@@ -104,7 +115,7 @@ function movieSearch (userInput) {
 // Function to grab tweets from twitter
 function myTweets () {
 	// Set variable "client" to the twitter keys
-	var client = new Twitter(keys);
+	var client = new Twitter(keys.twitterKeys);
 
 	// screen name parameters to pass into client
 	var params = { screen_name: "WebDevKlein"};
@@ -133,7 +144,7 @@ var getArtistNames = function(artist) {
 }
 
 function spotifyApiSearch (userInput) {
-	var spotify = new Spotify(keys);
+	var spotify = new Spotify(keys.spotifyKeys);
 	// Conditional for undefined spotify search
 	if (userInput === undefined) {
 		userInput = "What's my age again";
@@ -157,6 +168,7 @@ function spotifyApiSearch (userInput) {
 			})
 		}
 		console.log(data);
+		writeToFile(data);
 	})
 }
 
